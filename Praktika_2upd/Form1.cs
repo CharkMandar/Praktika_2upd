@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using System.Windows.Forms.VisualStyles;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Diagnostics;
-using System.IO;
+using System.Drawing;
+using System.Windows.Forms;
+
 
 namespace Praktika_2upd
 {
     public partial class Form1 : Form
     {
+
+        #region === properties ===
+        bool _useArmed = false;
+
         Form Form2 = new Form();
         //System.Windows.Forms.ComboBox ComboBox1 = new System.Windows.Forms.ComboBox();
         System.Windows.Forms.TextBox TextBox1 = new System.Windows.Forms.TextBox();
@@ -49,95 +42,170 @@ namespace Praktika_2upd
         int width, height;
         double x, y;
         string str;
+
+        #endregion
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false)
+            if (_useArmed == false)
             {
-                MessageBox.Show("Выберите больше пунктов!", "Внимание!");
-                return;
-            }
-
-            clear();
-            get_params();
-            selection_steel();
-
-
-            if (checkBox3.Checked == true)
-            {
-                int i = 0;
-                get_Summary();
-                while (i <= n)
+                if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false)
                 {
-                    if (i < get_ind()-1)
-                        this.chart1.Series[0].Points.AddXY(r[i], sigma_summary[i]);
-                    if (i > get_ind() + 1)
-                        this.chart1.Series[5].Points.AddXY(r[i], sigma_summary[i]);
+                    MessageBox.Show("Выберите больше пунктов!", "Внимание!");
+                    return;
+                }
 
-                    else
-                    {
-                        this.chart1.Series[4].Points.AddXY(r[i], sigma_summary[i]);
-                    }
+                clear();
+                get_params();
+                selection_steel();
+
+
+                if (checkBox3.Checked == true)
+                {
+                    int i = 0;
+                    get_Summary();
                     
-                 
-                    
-                    i++;
-                }
-            }
-
-            if (checkBox1.Checked == true)
-            {
-                int i = 0;
-                get_tention_for_homogen();
-                while (i <= n)
-                {
-                    this.chart1.Series[2].Points.AddXY(r[i], sigma_homo[i]);
-                    i++;
-                }
-            }
-
-            if (checkBox2.Checked == true)
-            {
-                int i = 0;
-                get_radial_homo();
-                while (i <= n)
-                {
-                    this.chart1.Series[3].Points.AddXY(r[i], radial_homo[i]);
-                    i++;
-                }
-            }
-
-            if (checkBox4.Checked == true)
-            {
-                int i = 0;
-                get_radial_summary();
-                while (i <= n)
-                {
-                    if (i <= get_ind()-1)
-                        this.chart1.Series[1].Points.AddXY(r[i], radial_summary[i]);
-                    if (i > get_ind() )
-                        this.chart1.Series[7].Points.AddXY(r[i], radial_summary[i]);
-
-                    else
+                    while (i <= n)
                     {
-                        this.chart1.Series[8].Points.AddXY(r[i], radial_summary[i]);
+                        if (i < get_ind() - 1)
+                            this.chart1.Series[0].Points.AddXY(r[i], sigma_summary[i]);
+                        if (i > get_ind() + 1)
+                            this.chart1.Series[5].Points.AddXY(r[i], sigma_summary[i]);
+
+                        else
+                        {
+                            this.chart1.Series[4].Points.AddXY(r[i], sigma_summary[i]);
+                        }
+
+                        
+
+                        i++;
                     }
-                    i++;
+                }
+
+                if (checkBox1.Checked == true)
+                {
+                    int i = 0;
+                    get_tention_for_homogen();
+                    while (i <= n)
+                    {
+                        this.chart1.Series[2].Points.AddXY(r[i], sigma_homo[i]);
+                        //MessageBox.Show(Convert.ToString(sigma_homo[i]));
+                        i++;
+                    }
+
+
+                }
+
+                if (checkBox2.Checked == true)
+                {
+                    int i = 0;
+                    get_radial_homo();
+                    while (i <= n)
+                    {
+                        this.chart1.Series[3].Points.AddXY(r[i], radial_homo[i]);
+                        i++;
+                    }
+                }
+
+                if (checkBox4.Checked == true)
+                {
+                    int i = 0;
+                    get_radial_summary();
+                    while (i <= n)
+                    {
+                        if (i <= get_ind() - 1)
+                            this.chart1.Series[1].Points.AddXY(r[i], radial_summary[i]);
+                        if (i > get_ind())
+                            this.chart1.Series[7].Points.AddXY(r[i], radial_summary[i]);
+
+                        else
+                        {
+                            this.chart1.Series[8].Points.AddXY(r[i], radial_summary[i]);
+                        }
+                        i++;
+                    }
+                }
+
+                get_heat();
+                //MessageBox.Show(Convert.ToString(heat));
+                dataGridView2.Rows.Add("Температура нагрева", heat);
+                dataGridView2.Rows.Add("Макс. напряжение однородн.", sigma_homo[0]);
+                dataGridView2.Rows.Add("Макс. напряжение сост. ", sigma_summary[get_ind()]);
+                dataGridView2.Rows.Add("Макс. допустимое напр.", sigma_max);
+                dataGridView2.Rows.Add("Мин. напряжение однородн", sigma_homo[n]);
+                dataGridView2.Rows.Add("Мин. напряжение сост", sigma_summary[get_ind() - 2]);
+            }
+            else
+            {
+                ArmedThreads pipe = new ArmedThreads(Convert.ToDouble(textBox8.Text), Convert.ToDouble(textBox9.Text), Convert.ToDouble(textBox5.Text)
+                    , Convert.ToInt32(textBox7.Text), Convert.ToDouble(textBox11.Text), Convert.ToDouble(textBox12.Text));
+                h = (pipe.getR1() - pipe.getR2()) / Convert.ToDouble(n);
+
+                r[0] = (pipe.getR2());
+                for (int i = 1; i < n; i++)
+                {
+                    r[i] = (pipe.getR2() + (i * h));
+
+                    //MessageBox.Show(Convert.ToString(r[i]));
+                }
+                r[n] = (pipe.getR1());
+
+                //double innerR, double outerR, double Angl, int amount, double innerP, double Step
+                double[] Inner = pipe.getTentionInPipe(r);
+                double[] Outer = pipe.getTentionInCore(r);
+                double[] Homo = pipe.getTentionInHomogen(r);
+                double[] Summary = pipe.getSummaryTention(r, Homo, Inner, Outer);
+
+                //for(int i = 0; i < r.Length + 1; i++)
+                //    dataGridView1.Rows.Add(i, r[i], Summary[i], Homo[i], Outer[i], Inner[i]);
+
+               
+                //MessageBox.Show(Convert.ToString(r[0]));
+                //MessageBox.Show(Convert.ToString(r[n]));
+
+                if (checkBox3.Checked == true)
+                {
+                    int i = 0;
+                    while (i < r.Length)
+                    {
+                        if (i < pipe.getInd(r) - 1)
+                            this.chart1.Series[0].Points.AddXY(r[i], Summary[i]);
+                        if (i > pipe.getInd(r) + 1)
+                        
+                            this.chart1.Series[5].Points.AddXY(r[i], Summary[i]);
+                        
+                        else
+                        {
+                            this.chart1.Series[4].Points.AddXY(r[i], Summary[i]);
+                        }
+
+
+
+                        i++;
+                    }
+                }
+
+                if (checkBox1.Checked == true)
+                {
+                    //MessageBox.Show(Convert.ToString(pipe.getInd(r)));
+                    int i = 0;
+                    while (i < r.Length)
+                    {
+                        this.chart1.Series[2].Points.AddXY(r[i], Homo[i]);
+                        
+                        i++;
+                    }
+
+
                 }
             }
-
-            get_heat();
-            //MessageBox.Show(Convert.ToString(heat));
-            dataGridView2.Rows.Add("Температура нагрева", heat);
-            dataGridView2.Rows.Add("Макс. напряжение однородн.", sigma_homo[0]);
-            dataGridView2.Rows.Add("Макс. напряжение сост. ", sigma_summary[get_ind()]);
-            dataGridView2.Rows.Add("Макс. допустимое напр.", sigma_max);
-            dataGridView2.Rows.Add("Мин. напряжение однородн", sigma_homo[n]);
-            dataGridView2.Rows.Add("Мин. напряжение сост", sigma_summary[get_ind()-2]);
 
         }
 
@@ -308,6 +376,41 @@ namespace Praktika_2upd
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
             Process.Start("Help\\Main.html");
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void armedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBox3.Visible = false;
+            groupBox4.Visible = true;
+            armedToolStripMenuItem.Checked = true;
+            thickToolStripMenuItem.Checked = false;
+            _useArmed = true;
+
+        }
+
+
+        private void thickToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBox3.Visible = true;
+            groupBox4.Visible = false;
+            armedToolStripMenuItem.Checked = false;
+            thickToolStripMenuItem.Checked = true;
+            _useArmed = false;
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
