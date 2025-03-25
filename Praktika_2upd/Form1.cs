@@ -5,7 +5,8 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Windows.Input;
-
+using OxyPlot.WindowsForms;
+using System.Windows.Forms;
 
 namespace Praktika_2upd
 {
@@ -91,13 +92,23 @@ namespace Praktika_2upd
             label7.Visible = false;
             textBox4.Visible = false;
             textBox6.Visible = false;
-
+            chart1.Dock = DockStyle.Fill;
+            plotView1.Dock = DockStyle.Fill;
 
             Form2.Bounds = new Rectangle(0, 0, 220, 220);
             Form2.StartPosition = FormStartPosition.CenterParent;
 
             chart1.Legends[0].Font = new Font("Arial", 14, FontStyle.Regular);
+
+            LoadHeatDistribution();
         }
+
+        private void LoadHeatDistribution()
+        {
+            var heatDistributionModel = new Temperature();
+            plotView1.Model = heatDistributionModel.GetModel(); 
+        }
+
         void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Form2.ShowDialog();
@@ -111,8 +122,6 @@ namespace Praktika_2upd
         #region === Buttons ===
         private void button1_Click(object sender, EventArgs e)
         {
-
-
             if (_useArmed == false)
             {
                 if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false)
@@ -124,7 +133,6 @@ namespace Praktika_2upd
                 clear();
                 get_params();
                 selection_steel();
-
 
                 if (checkBox3.Checked == true)
                 {
@@ -159,8 +167,6 @@ namespace Praktika_2upd
                         //MessageBox.Show(Convert.ToString(sigma_homo[i]));
                         i++;
                     }
-
-
                 }
 
                 if (checkBox2.Checked == true)
@@ -195,11 +201,9 @@ namespace Praktika_2upd
 
                 get_heat();
 
-
                 if (ExcelToolStripMenuItem.Checked == true)
                     ExcelOut(sigma_inner, sigma_outer, sigma_homo, sigma_summary, r3, false);
 
-                //MessageBox.Show(Convert.ToString(heat));
                 dataGridView2.Rows.Add("Температура нагрева", heat);
                 dataGridView2.Rows.Add("Макс. напряжение однородн.", sigma_homo[0]);
                 dataGridView2.Rows.Add("Макс. напряжение сост. ", sigma_summary[get_ind()]);
@@ -210,7 +214,6 @@ namespace Praktika_2upd
 
             else
             {
-                //double innerR, double outerR, double Angl, int amount, double innerP, double Step
                 ArmedThreads pipe = new ArmedThreads(Convert.ToDouble(textBox8.Text), Convert.ToDouble(textBox9.Text), Convert.ToDouble(textBox12.Text)
                     , Convert.ToInt32(textBox7.Text), Convert.ToDouble(textBox11.Text));
                 h = (pipe.getR3() - pipe.getR2()) / Convert.ToDouble(n);
@@ -219,8 +222,6 @@ namespace Praktika_2upd
                 for (int i = 1; i < n; i++)
                 {
                     r[i] = (pipe.getR2() + (i * h));
-
-                    //MessageBox.Show(Convert.ToString(r[i]));
                 }
                 r[n] = (pipe.getR3());
 
@@ -228,13 +229,6 @@ namespace Praktika_2upd
                 double[] Outer = pipe.getTentionInCore(r);
                 double[] Homo = pipe.getTentionInHomogen(r);
                 double[] Summary = pipe.getSummaryTention(r, Homo, Inner, Outer);
-
-                //for(int i = 0; i < r.Length + 1; i++)
-                //    dataGridView1.Rows.Add(i, r[i], Summary[i], Homo[i], Outer[i], Inner[i]);
-
-
-                //MessageBox.Show(Convert.ToString(r[0]));
-                //MessageBox.Show(Convert.ToString(r[n]));
 
                 if (checkBox3.Checked == true)
                 {
@@ -244,22 +238,17 @@ namespace Praktika_2upd
                         if (r[i] < pipe.getR1() - 1)
                             this.chart1.Series[0].Points.AddXY(r[i], Summary[i]);
                         else if (r[i] > pipe.getR1() + 1)
-                        
                             this.chart1.Series[5].Points.AddXY(r[i], Summary[i]);
-                        
                         else
                         {
                             this.chart1.Series[4].Points.AddXY(r[i], Summary[i]);
                         }
-
-
                         i++;
                     }
                 }
 
                 if (checkBox1.Checked == true)
                 {
-                    
                     int i = 0;
                     while (i < r.Length)
                     {
@@ -267,8 +256,6 @@ namespace Praktika_2upd
 
                         i++;
                     }
-
-
                 }
 
                 if (checkBox2.Checked == true)
@@ -282,7 +269,6 @@ namespace Praktika_2upd
                     while (i < r.Length)
                     {
                         this.chart1.Series[3].Points.AddXY(r[i], Homo[i]);
-
                         i++;
                     }
                 }
@@ -300,15 +286,11 @@ namespace Praktika_2upd
                         if (r[i] < pipe.getR1() - 1)
                             this.chart1.Series[1].Points.AddXY(r[i], Summary[i]);
                         else if (r[i] > pipe.getR1() + 1)
-
                             this.chart1.Series[7].Points.AddXY(r[i], Summary[i]);
-
                         else
                         {
                             this.chart1.Series[8].Points.AddXY(r[i], Summary[i]);
                         }
-
-
                         i++;
                     }
                 }
@@ -317,7 +299,6 @@ namespace Praktika_2upd
                 if (ExcelToolStripMenuItem.Checked == true)
                 {
                     ExcelOut(Inner, Outer, Homo, Summary, pipe.getR1(), true);
-                    //MessageBox.Show("Esxcel Complete!");
                 }
             }
 
@@ -353,7 +334,6 @@ namespace Praktika_2upd
             dataGridView1.Rows.Clear();
             dataGridView2.Rows.Clear();
         }
-
         #endregion
 
 
@@ -384,12 +364,12 @@ namespace Praktika_2upd
 
             }
         }
+
         public void get_radial_summary()
         {
             get_radial_homo();
             get_radial_inner();
             get_radial_outer();
-
 
             for (int i = 0; i < n + 1; i++)
             {
@@ -404,8 +384,6 @@ namespace Praktika_2upd
                     //radial_summary[i] = ((p2 * r2 * r2) / (r1 * r1 - r2 * r2)) * (1 - (r1 *- r1) / (r[i] * r[i])) + ((p3 * r3 * r3) / (r1 * r1 - r3 * r3)) * (1 - (r1 * r1 / (r[i] * r[i])));
                 }
             }
-
-
         }
         #endregion
 
@@ -428,8 +406,6 @@ namespace Praktika_2upd
             }
         }
 
-
-
         public void get_tention_for_homogen()
         {
             for (int i = 0; i < n + 1; i++)
@@ -438,7 +414,6 @@ namespace Praktika_2upd
             }
 
         }
-
 
         private void get_Summary()
         {
@@ -468,7 +443,6 @@ namespace Praktika_2upd
         }
         #endregion
 
-
         #region === getStuff ===
         public int get_ind()
         {
@@ -485,7 +459,6 @@ namespace Praktika_2upd
             p3 = (delta_r * E * (r1 * r1 - r3 * r3) * (r3 * r3 - r2 * r2)) / (2 * r3 * r3 * r3 * (r1 * r1 - r2 * r2));
         }
 
-
         public void get_heat()
         {
             this.heat = (2 * p3 * r3 * r3 * (r1 * r1 - r2 * r2)) / (E * alph * (r1 * r1 - r3 * r3) * (r3 * r3 - r2 * r2));
@@ -495,39 +468,6 @@ namespace Praktika_2upd
         {
             delta_r = ((2 * p2 * r3) / E) * ((r1 - r2) / (r1 + r2));
         }
-
-        //private void chart1_Click(object sender, System.Windows.Forms.MouseEventArgs e)
-        //{
-        //    // Получаем координаты курсора в пикселях
-        //    int xPixel = e.X;
-        //
-        //    // Преобразуем пиксельные координаты в координаты графика
-        //    double xValue = chart1.ChartAreas[0].AxisX.PixelPositionToValue(xPixel);
-        //
-        //    // Определяем область увеличения (настраивайте значения по необходимости)
-        //    double zoomWidth = 2;  // Ширина области увеличения (меньше, чем раньше)
-        //    double zoomHeight = 200; // Высота области увеличения
-        //
-        //    // Задаем новые границы так, чтобы увеличивалась область СПРАВА от точки клика.
-        //    double newMinX = xValue; // Начало области увеличения - в точке клика
-        //    double newMaxX = chart1.ChartAreas[0].AxisX.Maximum; // Конец области - максимальное значение оси X
-        //    double newMinY = chart1.ChartAreas[0].AxisY.Minimum; // Минимум оси Y
-        //    double newMaxY = chart1.ChartAreas[0].AxisY.Maximum; // Максимум оси Y
-        //
-        //
-        //    // Устанавливаем новые границы для масштабирования, но ограничиваем zoomWidth
-        //    chart1.ChartAreas[0].AxisX.ScaleView.Size = Math.Min(zoomWidth, newMaxX - newMinX); //Ограничение размера области
-        //    chart1.ChartAreas[0].AxisX.ScaleView.Position = newMinX;
-        //    chart1.ChartAreas[0].AxisY.ScaleView.Size = zoomHeight;
-        //    chart1.ChartAreas[0].AxisY.ScaleView.Position = newMinY;
-        //
-        //    // Ограничиваем ScaleView, чтобы избежать выхода за пределы данных
-        //    chart1.ChartAreas[0].AxisX.ScaleView.Position = Math.Max(chart1.ChartAreas[0].AxisX.Minimum, Math.Min(chart1.ChartAreas[0].AxisX.ScaleView.Position, chart1.ChartAreas[0].AxisX.Maximum - chart1.ChartAreas[0].AxisX.ScaleView.Size));
-        //    chart1.ChartAreas[0].AxisY.ScaleView.Position = Math.Max(chart1.ChartAreas[0].AxisY.Minimum, Math.Min(chart1.ChartAreas[0].AxisY.ScaleView.Position, chart1.ChartAreas[0].AxisY.Maximum - chart1.ChartAreas[0].AxisY.ScaleView.Size));
-        //
-        //    // Перерисовка графика
-        //    chart1.Invalidate();
-        //}
 
         public void get_optimal()
         {
@@ -553,9 +493,7 @@ namespace Praktika_2upd
                 r[n] = (r1);
                 get_optimal();
                 get_delta_r();
-
             }
-
             else if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && ((checkBox5.Checked == true && textBox4.Text == "") || (checkBox5.Checked == true && textBox6.Text == "")))
             {
                 MessageBox.Show("Вы ввели не все расширенные параметры. Используются оптимальные соотношения", "Внимание!");
@@ -614,13 +552,6 @@ namespace Praktika_2upd
                 get_p3();
 
             }
-
-
-
-            //MessageBox.Show(Convert.ToString(r[0]));
-            //MessageBox.Show(Convert.ToString(r[n]));
-            //MessageBox.Show(Convert.ToString(delta_r));
-            //MessageBox.Show(Convert.ToString(p3));
         }
 
         public void selection_steel()
@@ -679,26 +610,35 @@ namespace Praktika_2upd
 
 
         #region === TopPanel ===
-        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
             Process.Start("Help\\Main.html");
         }
 
-        private void armedToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            groupBox3.Visible = false;
-            groupBox4.Visible = true;
-            armedToolStripMenuItem.Checked = true;
-            thickToolStripMenuItem.Checked = false;
-            _useArmed = true;
-        }
-        private void thickToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void thickPipeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             groupBox3.Visible = true;
             groupBox4.Visible = false;
-            armedToolStripMenuItem.Checked = false;
-            thickToolStripMenuItem.Checked = true;
+            armedPipeToolStripMenuItem.Checked = false;
+            thickPipeToolStripMenuItem.Checked = true;
             _useArmed = false;
+        }
+
+        private void armedPipeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBox3.Visible = false;
+            groupBox4.Visible = true;
+            armedPipeToolStripMenuItem.Checked = true;
+            thickPipeToolStripMenuItem.Checked = false;
+            _useArmed = true;
+        }
+
+        private void ExcelToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (ExcelToolStripMenuItem.Checked == false)
+                ExcelToolStripMenuItem.Checked = true;
+            else
+                ExcelToolStripMenuItem.Checked = false;
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
@@ -718,14 +658,6 @@ namespace Praktika_2upd
                 textBox4.Visible = false;
                 textBox6.Visible = false;
             }
-        }
-
-        private void ExcelToolStripMenuItem_Click(object sender, EventArgs e) 
-        {
-            if (ExcelToolStripMenuItem.Checked == false)
-                ExcelToolStripMenuItem.Checked = true;
-            else
-                ExcelToolStripMenuItem.Checked = false; 
         }
 
         private void ExcelOut(double[] inner, double[] outer, double[] homo, double[] summary, double r3, bool Armed)

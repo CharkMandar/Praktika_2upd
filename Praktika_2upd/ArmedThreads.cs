@@ -15,7 +15,7 @@ namespace Praktika_2upd
         #region === Properties ===
         double r2, r1, r3, Ang, P2, P3, L;
         int n;
-                const double ThreadThickness = 0.1; // мм
+        const double ThreadThickness = 0.1; // мм
         const double Sigma_max = 1.018; // МПа
         const double LD = 115;
         const double ro = 1.44;
@@ -29,14 +29,8 @@ namespace Praktika_2upd
             L = Step;//2*Math.PI*r3/Math.Tan(Ang); // шаг - мм
             P3 = (P2 * (r1 - r2)) / (2 * (r1 + r2));
             Ang = Math.Atan(Math.PI * ThreadThickness / L);// угол намотки
-            //this.P3 = (n * Math.Sin(Ang) * ThreadThickness * ThreadThickness * Sigma_max) / (r3 * L * 1000);
-
-            //MessageBox.Show(Convert.ToString(r1), "r1");
-            //MessageBox.Show(Convert.ToString(r3), "r3");
-            //MessageBox.Show(Convert.ToString(P3), "P3");
         }
 
-        //конуструктор по умолчанию
         public ArmedThreads()
         {
             r2 = 1;
@@ -49,25 +43,20 @@ namespace Praktika_2upd
         }
         #endregion
 
-
         #region === TentionFuncs ===
         public double[] getTentionInCore(double[] r)
         {
             double[] coreTention = new double[r.Length];
             for (int i = 0; i < r.Length; i++)
             {
-
                 //coreTention[i] = (P3 * r[i] * L ) / (n * Math.Sin(Ang) * ThreadThickness * ThreadThickness );
                 coreTention[i] = (n * Math.Sin(Ang) * ThreadThickness * ThreadThickness * P3 * 3800) / (r[i] * L);
-                //MessageBox.Show(Convert.ToString(coreTention[i]));
             }
-
             return coreTention;
         }
 
         public double getPressureInCore()
         {
-            
             return (n * Math.Sin(Ang) * ThreadThickness * ThreadThickness * Sigma_max) / (r3* L * 1000);
         }
 
@@ -178,7 +167,6 @@ namespace Praktika_2upd
             }
             return r.Length / 2;
         }
-
         #endregion
 
     }

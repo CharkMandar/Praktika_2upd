@@ -28,27 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series37 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series38 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series39 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series40 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series41 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series42 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series43 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series44 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series45 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.ExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вариантТрубыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.armedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,172 +90,29 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.plotView1 = new OxyPlot.WindowsForms.PlotView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.ExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.armedPipeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thickPipeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox4.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // chart1
-            // 
-            this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(0, 21);
-            this.chart1.Name = "chart1";
-            series10.BorderWidth = 3;
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series10.Color = System.Drawing.Color.LimeGreen;
-            series10.Legend = "Legend1";
-            series10.Name = "Тангенц. сост";
-            series11.BorderWidth = 3;
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series11.Color = System.Drawing.Color.Red;
-            series11.Legend = "Legend1";
-            series11.Name = "Рад. сост.";
-            series12.BorderWidth = 3;
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series12.Color = System.Drawing.Color.Blue;
-            series12.Legend = "Legend1";
-            series12.Name = "Тангенц. одн.";
-            series13.BorderWidth = 3;
-            series13.ChartArea = "ChartArea1";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series13.Color = System.Drawing.Color.Black;
-            series13.Legend = "Legend1";
-            series13.Name = "Рад. одн.";
-            series14.BorderWidth = 3;
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series14.Color = System.Drawing.Color.LimeGreen;
-            series14.IsVisibleInLegend = false;
-            series14.Legend = "Legend1";
-            series14.Name = "Series5";
-            series15.BorderWidth = 3;
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series15.Color = System.Drawing.Color.LimeGreen;
-            series15.IsVisibleInLegend = false;
-            series15.Legend = "Legend1";
-            series15.Name = "Series6";
-            series16.BorderWidth = 3;
-            series16.ChartArea = "ChartArea1";
-            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series16.IsVisibleInLegend = false;
-            series16.Legend = "Legend1";
-            series16.Name = "Series1";
-            series17.BorderWidth = 3;
-            series17.ChartArea = "ChartArea1";
-            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series17.Color = System.Drawing.Color.Red;
-            series17.IsVisibleInLegend = false;
-            series17.Legend = "Legend1";
-            series17.Name = "Series8";
-            series18.BorderWidth = 3;
-            series18.ChartArea = "ChartArea1";
-            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series18.Color = System.Drawing.Color.Red;
-            series18.IsVisibleInLegend = false;
-            series18.Legend = "Legend1";
-            series18.Name = "Series9";
-            this.chart1.Series.Add(series10);
-            this.chart1.Series.Add(series11);
-            this.chart1.Series.Add(series12);
-            this.chart1.Series.Add(series13);
-            this.chart1.Series.Add(series14);
-            this.chart1.Series.Add(series15);
-            this.chart1.Series.Add(series16);
-            this.chart1.Series.Add(series17);
-            this.chart1.Series.Add(series18);
-            this.chart1.Size = new System.Drawing.Size(1505, 1009);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.toolStrip1);
-            this.groupBox1.Controls.Add(this.chart1);
-            this.groupBox1.Location = new System.Drawing.Point(3, -1);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1505, 1059);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "График";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripDropDownButton2});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 18);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1499, 31);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(91, 28);
-            this.toolStripButton1.Text = "Справка";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click_1);
-            // 
-            // toolStripDropDownButton2
-            // 
-            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ExcelToolStripMenuItem,
-            this.вариантТрубыToolStripMenuItem});
-            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
-            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(90, 28);
-            this.toolStripDropDownButton2.Text = "Опции";
-            // 
-            // ExcelToolStripMenuItem
-            // 
-            this.ExcelToolStripMenuItem.Checked = true;
-            this.ExcelToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ExcelToolStripMenuItem.Name = "ExcelToolStripMenuItem";
-            this.ExcelToolStripMenuItem.Size = new System.Drawing.Size(243, 26);
-            this.ExcelToolStripMenuItem.Text = "Вывод данных в Excel";
-            this.ExcelToolStripMenuItem.Click += new System.EventHandler(this.ExcelToolStripMenuItem_Click);
-            // 
-            // вариантТрубыToolStripMenuItem
-            // 
-            this.вариантТрубыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thickToolStripMenuItem,
-            this.armedToolStripMenuItem});
-            this.вариантТрубыToolStripMenuItem.Name = "вариантТрубыToolStripMenuItem";
-            this.вариантТрубыToolStripMenuItem.Size = new System.Drawing.Size(243, 26);
-            this.вариантТрубыToolStripMenuItem.Text = "Вариант трубы";
-            // 
-            // thickToolStripMenuItem
-            // 
-            this.thickToolStripMenuItem.Checked = true;
-            this.thickToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.thickToolStripMenuItem.Name = "thickToolStripMenuItem";
-            this.thickToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
-            this.thickToolStripMenuItem.Text = "Толстостенная ";
-            this.thickToolStripMenuItem.Click += new System.EventHandler(this.thickToolStripMenuItem_Click_1);
-            // 
-            // armedToolStripMenuItem
-            // 
-            this.armedToolStripMenuItem.Name = "armedToolStripMenuItem";
-            this.armedToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
-            this.armedToolStripMenuItem.Text = "Армированная";
-            this.armedToolStripMenuItem.Click += new System.EventHandler(this.armedToolStripMenuItem_Click_1);
             // 
             // dataGridView2
             // 
@@ -309,7 +157,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(1514, 723);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(404, 237);
+            this.groupBox2.Size = new System.Drawing.Size(404, 221);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Отображение";
@@ -317,7 +165,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(219, 130);
+            this.button2.Location = new System.Drawing.Point(216, 153);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(167, 62);
             this.button2.TabIndex = 9;
@@ -328,7 +176,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(34, 129);
+            this.button1.Location = new System.Drawing.Point(34, 152);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(167, 63);
             this.button1.TabIndex = 8;
@@ -795,26 +643,212 @@
             this.groupBox4.Text = "Параметры";
             this.groupBox4.Visible = false;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(2, -1);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabControl1.RightToLeftLayout = true;
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1506, 948);
+            this.tabControl1.TabIndex = 2;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.toolStrip1);
+            this.tabPage1.Controls.Add(this.chart1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1498, 919);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Графики";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // chart1
+            // 
+            this.chart1.BackColor = System.Drawing.Color.Transparent;
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
+            this.chart1.Location = new System.Drawing.Point(0, 3);
+            this.chart1.Name = "chart1";
+            series37.BorderWidth = 3;
+            series37.ChartArea = "ChartArea1";
+            series37.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series37.Color = System.Drawing.Color.LimeGreen;
+            series37.Legend = "Legend1";
+            series37.Name = "Тангенц. сост";
+            series38.BorderWidth = 3;
+            series38.ChartArea = "ChartArea1";
+            series38.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series38.Color = System.Drawing.Color.Red;
+            series38.Legend = "Legend1";
+            series38.Name = "Рад. сост.";
+            series39.BorderWidth = 3;
+            series39.ChartArea = "ChartArea1";
+            series39.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series39.Color = System.Drawing.Color.Blue;
+            series39.Legend = "Legend1";
+            series39.Name = "Тангенц. одн.";
+            series40.BorderWidth = 3;
+            series40.ChartArea = "ChartArea1";
+            series40.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series40.Color = System.Drawing.Color.Black;
+            series40.Legend = "Legend1";
+            series40.Name = "Рад. одн.";
+            series41.BorderWidth = 3;
+            series41.ChartArea = "ChartArea1";
+            series41.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series41.Color = System.Drawing.Color.LimeGreen;
+            series41.IsVisibleInLegend = false;
+            series41.Legend = "Legend1";
+            series41.Name = "Series5";
+            series42.BorderWidth = 3;
+            series42.ChartArea = "ChartArea1";
+            series42.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series42.Color = System.Drawing.Color.LimeGreen;
+            series42.IsVisibleInLegend = false;
+            series42.Legend = "Legend1";
+            series42.Name = "Series6";
+            series43.BorderWidth = 3;
+            series43.ChartArea = "ChartArea1";
+            series43.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series43.IsVisibleInLegend = false;
+            series43.Legend = "Legend1";
+            series43.Name = "Series1";
+            series44.BorderWidth = 3;
+            series44.ChartArea = "ChartArea1";
+            series44.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series44.Color = System.Drawing.Color.Red;
+            series44.IsVisibleInLegend = false;
+            series44.Legend = "Legend1";
+            series44.Name = "Series8";
+            series45.BorderWidth = 3;
+            series45.ChartArea = "ChartArea1";
+            series45.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series45.Color = System.Drawing.Color.Red;
+            series45.IsVisibleInLegend = false;
+            series45.Legend = "Legend1";
+            series45.Name = "Series9";
+            this.chart1.Series.Add(series37);
+            this.chart1.Series.Add(series38);
+            this.chart1.Series.Add(series39);
+            this.chart1.Series.Add(series40);
+            this.chart1.Series.Add(series41);
+            this.chart1.Series.Add(series42);
+            this.chart1.Series.Add(series43);
+            this.chart1.Series.Add(series44);
+            this.chart1.Series.Add(series45);
+            this.chart1.Size = new System.Drawing.Size(1486, 910);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.plotView1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1498, 919);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Температура";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // plotView1
+            // 
+            this.plotView1.Location = new System.Drawing.Point(3, 6);
+            this.plotView1.Name = "plotView1";
+            this.plotView1.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.plotView1.Size = new System.Drawing.Size(1488, 971);
+            this.plotView1.TabIndex = 0;
+            this.plotView1.Text = "plotView1";
+            this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1498, 919);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Напряжения";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripDropDownButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1492, 27);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(91, 24);
+            this.toolStripButton1.Text = "Справка";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ExcelToolStripMenuItem,
+            this.armedPipeToolStripMenuItem,
+            this.thickPipeToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(118, 28);
+            this.toolStripDropDownButton1.Text = "Настройки";
+            // 
+            // ExcelToolStripMenuItem
+            // 
+            this.ExcelToolStripMenuItem.Name = "ExcelToolStripMenuItem";
+            this.ExcelToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.ExcelToolStripMenuItem.Text = "Вывод в Excel";
+            this.ExcelToolStripMenuItem.Click += new System.EventHandler(this.ExcelToolStripMenuItem_Click_1);
+            // 
+            // armedPipeToolStripMenuItem
+            // 
+            this.armedPipeToolStripMenuItem.Name = "armedPipeToolStripMenuItem";
+            this.armedPipeToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.armedPipeToolStripMenuItem.Text = "Армированая труба";
+            this.armedPipeToolStripMenuItem.Click += new System.EventHandler(this.armedPipeToolStripMenuItem_Click);
+            // 
+            // thickPipeToolStripMenuItem
+            // 
+            this.thickPipeToolStripMenuItem.Name = "thickPipeToolStripMenuItem";
+            this.thickPipeToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
+            this.thickPipeToolStripMenuItem.Text = "Толстостенная труба";
+            this.thickPipeToolStripMenuItem.Click += new System.EventHandler(this.thickPipeToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.ClientSize = new System.Drawing.Size(1924, 959);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Pipe calculator";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -823,14 +857,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -865,8 +903,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.CheckBox checkBox5;
@@ -883,11 +919,18 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private OxyPlot.WindowsForms.PlotView plotView1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem ExcelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вариантТрубыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thickToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem armedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem armedPipeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thickPipeToolStripMenuItem;
     }
 }
 
