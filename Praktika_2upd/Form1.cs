@@ -27,12 +27,12 @@ namespace Praktika_2upd
         Label Label3 = new Label();
         Label Label4 = new Label();
         System.Windows.Forms.Button Button3 = new System.Windows.Forms.Button();
-        double r1, r2, r3, p2, p3, delta_r, heat, sigma_max;
-        double E = 2000000;
-        double alph = 0.0000125;
-        double max_heat = 450;
-        int n = 1000;
-        double h;
+        public double r1, r2, r3, p2, p3, delta_r, heat, sigma_max;
+        public double E = 2000000;
+        public double alph = 0.0000125;
+        public double max_heat = 450;
+        public int n = 1000;
+        public double h;
         double[] sigma_inner;
         double[] sigma_outer;
         double[] sigma_summary;
@@ -42,6 +42,8 @@ namespace Praktika_2upd
         double[] radial_homo;
         double[] radial_inner;
         double[] r;
+
+        public static double tr1, tr2;
 
         int width, height;
         double x, y;
@@ -99,15 +101,13 @@ namespace Praktika_2upd
             Form2.StartPosition = FormStartPosition.CenterParent;
 
             chart1.Legends[0].Font = new Font("Arial", 14, FontStyle.Regular);
-
-            LoadHeatDistribution();
         }
 
-        private void LoadHeatDistribution()
-        {
-            var heatDistributionModel = new Temperature();
-            plotView1.Model = heatDistributionModel.GetModel(); 
-        }
+        //private void LoadHeatDistribution()
+        //{
+        //    var heatDistributionModel = new Temperature();
+        //    plotView1.Model = heatDistributionModel.GetModel(); 
+        //}
 
         void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -124,6 +124,7 @@ namespace Praktika_2upd
         {
             if (_useArmed == false)
             {
+
                 if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false)
                 {
                     MessageBox.Show("Выберите больше пунктов!", "Внимание!");
@@ -133,6 +134,13 @@ namespace Praktika_2upd
                 clear();
                 get_params();
                 selection_steel();
+
+                tr1 = r1;
+                tr2 = r2;
+
+                Temperature temp = new Temperature(n, n, r3 - r2, r1 - r3, 10000, 50);
+                temp.UpdateVisualization(100);
+                plotView1.Model = temp.Model;
 
                 if (checkBox3.Checked == true)
                 {
@@ -164,7 +172,6 @@ namespace Praktika_2upd
                     while (i <= n)
                     {
                         this.chart1.Series[2].Points.AddXY(r[i], sigma_homo[i]);
-                        //MessageBox.Show(Convert.ToString(sigma_homo[i]));
                         i++;
                     }
                 }
